@@ -4,13 +4,14 @@ import com.nicky.gestionEconomia.domain.gateways.CategoryGateway;
 import com.nicky.gestionEconomia.domain.models.CategoryDomain;
 import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.repositories.GoalRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @AllArgsConstructor
 
-@Service
+@Repository
 public class CategoryRepositoryAdapter implements CategoryGateway {
 
     private final GoalRepository goalRepository;

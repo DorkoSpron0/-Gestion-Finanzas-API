@@ -127,7 +127,7 @@ public class UserDBO {
                                 accountDBO.getActive(),
                                 null,
                                 null
-                        )).toList() : new ArrayList<>(),
+                        )).toList() : null,
                 transactions != null ? transactions.stream()
                         .map(transactionDBO -> new TransactionDomain(
                                 transactionDBO.getId(),
@@ -138,7 +138,7 @@ public class UserDBO {
                                 null,
                                 null,
                                 null
-                        )).toList() : new ArrayList<>(),
+                        )).toList() : null,
                 categories != null ? categories.stream()
                         .map(categoryDBO -> new CategoryDomain(
                                 categoryDBO.getId(),
@@ -146,7 +146,7 @@ public class UserDBO {
                                 categoryDBO.getType(),
                                 null,
                                 null
-                        )).toList() : new ArrayList<>(),
+                        )).toList() : null,
                 goals != null ? goals.stream()
                         .map(goalDBO -> new GoalDomain(
                                 goalDBO.getId(),

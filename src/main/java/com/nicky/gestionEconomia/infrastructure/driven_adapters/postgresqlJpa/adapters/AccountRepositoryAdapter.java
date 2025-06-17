@@ -4,13 +4,14 @@ import com.nicky.gestionEconomia.domain.gateways.AccountGateway;
 import com.nicky.gestionEconomia.domain.models.AccountDomain;
 import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.repositories.AccountRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @AllArgsConstructor
 
-@Service
+@Repository
 public class AccountRepositoryAdapter implements AccountGateway {
 
     private final AccountRepository accountRepository;
