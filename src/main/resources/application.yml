@@ -1,0 +1,12 @@
+server:
+  port: 9595
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gestionEconomy
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
