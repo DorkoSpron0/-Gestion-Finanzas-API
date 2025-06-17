@@ -2,12 +2,20 @@ package com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.a
 
 import com.nicky.gestionEconomia.domain.gateways.TransactionGateway;
 import com.nicky.gestionEconomia.domain.models.TransactionDomain;
+import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.repositories.TransactionRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@AllArgsConstructor
+
+@Repository
 public class TransactionRepositoryAdapter implements TransactionGateway {
+
+    private final TransactionRepository transactionRepository;
+
     @Override
     public List<TransactionDomain> getTransactions(Long userId) {
         return List.of();

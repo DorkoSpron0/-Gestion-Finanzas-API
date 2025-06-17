@@ -22,6 +22,7 @@ public class TransactionUseCase {
     }
 
     public TransactionDomain createTransaction(Long accountId, TransactionDomain transaction) {
+        System.out.println("Creating transaction");
         return transactionGateway.createTransaction(accountId, transaction);
     }
 

@@ -2,12 +2,19 @@ package com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.a
 
 import com.nicky.gestionEconomia.domain.gateways.GoalGateway;
 import com.nicky.gestionEconomia.domain.models.GoalDomain;
+import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.repositories.GoalRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
+
 @Service
 public class GoalRepositoryAdapter implements GoalGateway {
+
+    private final GoalRepository goalRepository;
+
     @Override
     public GoalDomain createGoal(Long userId, GoalDomain goal) {
         return null;
