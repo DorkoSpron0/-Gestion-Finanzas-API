@@ -86,7 +86,7 @@ public class AccountDBO {
                                 transactionDBO.getDate(),
                                 transactionDBO.getAmount(),
                                 transactionDBO.getDescription(),
-                                new UserDomain(
+                                transactionDBO.getUser() != null ? new UserDomain(
                                         transactionDBO.getUser().getId(),
                                         transactionDBO.getUser().getName(),
                                         transactionDBO.getUser().getEmail(),
@@ -96,7 +96,7 @@ public class AccountDBO {
                                         null,
                                         null,
                                         null
-                                ),
+                                ) : null,
                                 transactionDBO.getCategory() != null ? new CategoryDomain(
                                         transactionDBO.getCategory().getId(),
                                         transactionDBO.getCategory().getName(),
@@ -104,7 +104,7 @@ public class AccountDBO {
                                         null,
                                         null
                                 ) : null,
-                                new AccountDomain(
+                                transactionDBO.getAccount() != null ? new AccountDomain(
                                         transactionDBO.getAccount().getId(),
                                         transactionDBO.getAccount().getName(),
                                         transactionDBO.getAccount().getType(),
@@ -112,7 +112,7 @@ public class AccountDBO {
                                         transactionDBO.getAccount().getActive(),
                                         null,
                                         null
-                                ),
+                                ) : null,
                                 transactionDBO.getGoal() != null ? new GoalDomain(
                                         transactionDBO.getGoal().getId(),
                                         transactionDBO.getGoal().getName(),

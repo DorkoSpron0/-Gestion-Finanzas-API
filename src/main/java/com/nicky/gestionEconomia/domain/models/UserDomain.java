@@ -13,4 +13,8 @@ public record UserDomain(
         List<TransactionDomain> transactions,
         List<CategoryDomain> categories,
         List<GoalDomain> goals) {
+
+    public UserDomain(Long id) {
+        this(id, null, null, null, null, null, null, null, null);
+    }
 }

@@ -9,4 +9,8 @@ public record AccountDomain(Long id,
                             Boolean active,
                             UserDomain user,
                             List<TransactionDomain> transactions) {
+
+    public AccountDomain(Long id) {
+        this(id, null, null, null, null, null, null);
+    }
 }
