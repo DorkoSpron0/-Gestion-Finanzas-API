@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -98,6 +97,7 @@ public class UserDBO {
                             .map(goalDomain -> new GoalDBO(
                                     goalDomain.id(),
                                     goalDomain.name(),
+                                    goalDomain.currentAmount(),
                                     goalDomain.goalAmount(),
                                     goalDomain.dueDate(),
                                     goalDomain.state(),
@@ -151,6 +151,7 @@ public class UserDBO {
                         .map(goalDBO -> new GoalDomain(
                                 goalDBO.getId(),
                                 goalDBO.getName(),
+                                goalDBO.getCurrentAmount(),
                                 goalDBO.getGoalAmount(),
                                 goalDBO.getDueDate(),
                                 goalDBO.getState(),

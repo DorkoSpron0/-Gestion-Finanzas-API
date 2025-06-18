@@ -3,10 +3,7 @@ package com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.d
 
 import com.nicky.gestionEconomia.domain.models.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 
 @Entity
 @Table(name = "goal_TABLE")
@@ -24,6 +22,7 @@ public class GoalDBO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Long currentAmount;
     private Long goalAmount;
     private LocalDate dueDate;
 
@@ -41,6 +40,7 @@ public class GoalDBO {
         GoalDBO.GoalDBOBuilder builder = GoalDBO.builder()
                 .id(domain.id())
                 .name(domain.name())
+                .currentAmount(domain.currentAmount())
                 .goalAmount(domain.goalAmount())
                 .dueDate(domain.dueDate())
                 .state(domain.state());
@@ -69,6 +69,7 @@ public class GoalDBO {
         return new GoalDomain(
                 id,
                 name,
+                getCurrentAmount(),
                 getGoalAmount(),
                 dueDate,
                 state,

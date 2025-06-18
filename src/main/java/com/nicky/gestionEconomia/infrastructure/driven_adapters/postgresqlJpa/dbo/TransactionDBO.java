@@ -2,10 +2,7 @@ package com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.d
 
 import com.nicky.gestionEconomia.domain.models.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 
 @Entity
 @Table(name = "transaction_TABLE")
@@ -25,19 +23,19 @@ public class TransactionDBO {
     private Long amount;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserDBO user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private CategoryDBO category;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private AccountDBO account;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "goal_id")
     private GoalDBO goal;
 
@@ -123,6 +121,7 @@ public class TransactionDBO {
                         ? new GoalDomain(
                         goal.getId(),
                         goal.getName(),
+                        goal.getCurrentAmount(),
                         goal.getGoalAmount(),
                         goal.getDueDate(),
                         goal.getState(),

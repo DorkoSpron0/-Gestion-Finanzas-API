@@ -2,10 +2,7 @@ package com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.d
 
 import com.nicky.gestionEconomia.domain.models.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 
 @Entity
 @Table(name = "account_TABLE")
@@ -116,6 +114,7 @@ public class AccountDBO {
                                 transactionDBO.getGoal() != null ? new GoalDomain(
                                         transactionDBO.getGoal().getId(),
                                         transactionDBO.getGoal().getName(),
+                                        transactionDBO.getGoal().getCurrentAmount(),
                                         transactionDBO.getGoal().getGoalAmount(),
                                         transactionDBO.getGoal().getDueDate(),
                                         transactionDBO.getGoal().getState(),

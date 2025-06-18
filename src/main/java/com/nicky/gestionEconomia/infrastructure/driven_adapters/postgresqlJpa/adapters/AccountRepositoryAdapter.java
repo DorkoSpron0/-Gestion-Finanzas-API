@@ -2,12 +2,15 @@ package com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.a
 
 import com.nicky.gestionEconomia.domain.gateways.AccountGateway;
 import com.nicky.gestionEconomia.domain.models.AccountDomain;
+import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.dbo.AccountDBO;
+import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.dbo.UserDBO;
 import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.repositories.AccountRepository;
+import com.nicky.gestionEconomia.infrastructure.driven_adapters.postgresqlJpa.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @AllArgsConstructor
 
@@ -15,12 +18,20 @@ import java.util.List;
 public class AccountRepositoryAdapter implements AccountGateway {
 
     private final AccountRepository accountRepository;
+    private final UserRepository userRepository;
 
     @Override
     public AccountDomain createAccount(Long userId, AccountDomain account) {
-        return null;
+        UserDBO userFounded = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User not found"));
+
+        AccountDBO accountMapped = AccountDBO.fromDomain(account);
+        accountMapped.setUser(userFounded);
+        AccountDBO saved = accountRepository.save(accountMapped);
+        return saved.toDomain();
     }
 
+    // TODO
     @Override
     public AccountDomain editAccount(Long accountId, AccountDomain account) {
         return null;
@@ -28,9 +39,14 @@ public class AccountRepositoryAdapter implements AccountGateway {
 
     @Override
     public String deleteAccount(Long accountId) {
-        return "";
+        AccountDBO accountFounded = accountRepository.findById(accountId)
+                .orElseThrow(() -> new NoSuchElementException("Account not found"));
+
+        accountRepository.delete(accountFounded);
+        return "Account with id " + accountId + " not found";
     }
 
+    // TODO
     @Override
     public String setTransactionToAccount(Long accountId, List<Long> transactionsIds) {
         return "";

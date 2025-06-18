@@ -5,6 +5,7 @@ import java.util.List;
 
 public record GoalDomain(Long id,
                          String name,
+                         Long currentAmount,
                          Long goalAmount,
                          LocalDate dueDate,
                          GoalState state,
